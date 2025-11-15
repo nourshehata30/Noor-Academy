@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses - Noor Academy</title>
+  <link rel="shortcut icon" href="My Logo.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      padding: 20px 100px;
+      background: lightcoral;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 99;
+    }
+
+    .logo img {
+      width: 160px;
+      float: left;
+      height: auto;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navigation a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 45px;
+      font-size: 1.1em;
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      border: 2px solid black;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navigation a:hover,
+    .navigation a.active {
+      background: linear-gradient(135deg, #ffb6b9, #ffe6e6);
+      color: black;
+      transform: scale(1.05);
+    }
+
+    /* Main Content */
+    main {
+      width: 90%;
+      max-width: 1300px;
+      margin: 80px auto;
+      text-align: center;
+    }
+
+    main h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
+
+    .courses-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .course-card {
+      background-color: #c7748b;
+      text-decoration: none;
+      color: black;
+      display: block;
+      border-radius: 25px;
+      width: 370px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .course-card:hover {
+      text-decoration: none;
+      color: black;
+      transform: translateY(-8px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+    }
+
+    .course-card h2 {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .course-card p {
+      font-size: 1em;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      padding: 20px 0 10px 0;
+      background: linear-gradient(to bottom, #d96b6b 0%, #f3b2b2 100%);
+      text-align: center;
+      color: black;
+      border-top-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+      margin-top: auto;
+    }
+
+    footer img {
+      width: 140px;
+      height: auto;
+      margin: 5px auto 10px auto;
+      display: block;
+    }
+
+    footer h3 {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 0;
+      margin: 5px 0 10px 0;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      transition: 0.3s ease;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    footer ul li a:hover {
+      background: linear-gradient(135deg, #ffb6b9, #ffe6e6);
+      color: black;
+      transform: scale(1.05);
+    }
+
+    footer p {
+      margin: 3px 0;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="Logo.png" alt="Noor Academy Logo" />
+    </div>
+    <nav class="navigation">
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Courses.html" class="active">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Courses We Offer</h1>
+
+    <div class="courses-container">
+      <a href="Qaida.html" class="course-card">
+        <h2>Arabic Alphabets / Qaida Course</h2>
+        <p>
+          Learn the Qaida in a very engaging way through games and flashcards.
+          Build a strong foundation in Arabic reading and pronunciation.
+        </p>
+      </a>
+
+      <a href="Recitation.html" class="course-card">
+        <h2>Quran Recitation Course</h2>
+        <p>
+          Learn how to read the Quran fluently with correct pronunciation and
+          Tajweed. Develop accuracy, fluency, and beauty in recitation.
+        </p>
+      </a>
+
+      <a href="Memorisation.html" class="course-card">
+        <h2>Quran Memorisation Course</h2>
+        <p>
+          Recite and memorise the Quran with Tajweed rules under the guidance of
+          experienced teachers who help you memorise with meaning and precision.
+        </p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <img src="Logo.png" alt="Noor Academy" />
+    <p>Contact Us: +44 7873370177</p>
+    <p>&copy;2025 Noor Academy. All rights reserved.</p>
+  </footer>
+</body>
+</html>

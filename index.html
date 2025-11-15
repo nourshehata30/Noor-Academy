@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noor Academy</title>
+    <link rel="shortcut icon" href="My Logo.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: whitesmoke;
+        }
+        header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 90px;
+            padding: 20px 100px;
+            background: lightcoral;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+            
+        }
+        .logo img {
+            float: left;
+            width: 160px;
+            height: auto;
+        }
+        .navigation{
+            display: flex;
+            gap: 20px;
+        }
+        .navigation a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width:120px;
+            height: 45px;
+            font-size: 1.1em;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            border: 2px solid black;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+
+        }
+
+        .navigation a:hover {
+            background: linear-gradient(135deg, #ffb6b9, #ffe6e6);
+            color: black;
+            transform: scale(1.05);
+        }
+        .navigation a::after {
+            display: none;
+        }
+
+        .navigation a.active {
+          background: #ffb6b9;
+          color: black;
+          font-weight: bold;
+          border: 2px solid black;
+        }
+
+        .text-box {
+            width: 100%;
+            color: darkslategray;
+            position: relative;
+            top: 45%;
+            left: 50%;
+            margin-top: 10px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            margin-top: -40px;
+            flex-direction: column;
+        }
+        .text-box img {
+            width: 1425px;
+            height:400px;
+            transition: transform 0.3s ease;
+            margin-top: -20px;
+            border-radius: 10px;
+            
+        
+        }
+        .wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .wrapper.active-popup {
+            display: flex;
+        }
+        .form-box {
+            width: 400px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .form-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 5px;
+            color: #999;
+            font-size: 0.9em;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+        .input-box input:focus + label,
+        .input-box input:not(:placeholder-shown) + label {
+            top: -5px;
+            left: 10px;
+            color: #666;
+            font-size: 0.8em;
+        }
+        .form-box .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background: lightcoral;
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form-box .btn:hover {
+            background: darkred;
+        }
+        
+        .text-box h1 {
+            font-size: 62px;
+            margin-top: 60px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        .text-box p {
+            margin: 10px 0 40px;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+            color: darkslategray;
+            
+        }
+        .Courses {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            padding-top: 105px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        .row {
+            margin-top: 3%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .Courses-col  {
+            flex-basis: 31%;
+            background: palevioletred;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-bottom: 5%;
+            padding: 25px 15px;
+            box-sizing: border-box; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .Courses-col h3{
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0 ;
+        }
+        .Courses-col:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px  rgba(0,0,0,0.2);
+        }
+
+
+        .Courses a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .More-About {
+            width: 80%;
+            border-radius: 10px;
+            padding: 40px;
+            margin: auto;
+            text-align: center;
+            padding-top: 30px;
+        }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        
+        }
+        .text-content {
+            flex: 2;
+            padding-right: 20px;
+        }
+        .image-content {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+        }
+        .image-content img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .More-About h1{
+            font-size: 36px;
+            font-weight: 600;
+        }
+        .More-About P {
+            padding: 0;
+            text-align: left;
+            font-size: 19px;
+        }
+        .More-About h2{
+            text-align: left;
+            margin-top: 16px ;
+            margin-bottom: 15px;
+        }
+        .More-About img {
+            width: 80%;
+            height: 630px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .pros {
+            width: 80%;
+            border-radius: 10px;
+            padding: 40px;
+            margin: auto;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+        .pros p {
+            padding: 0;
+            text-align: left;
+            font-size: 19px;
+            
+        }
+        .pros img {
+            width: 400px;
+            height: 160px;
+            position: relative;
+            border-radius: 10px;
+        }
+        .cta {
+            margin: 50px auto;
+            width: 80%;
+            background-image: url(Screenshot\ 2024-05-30\ 131056.png);
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+            text-align: center;
+            padding: 120px 0;
+        }
+        .curve-divider {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: whitesmoke;
+            border-bottom-left-radius: 100% 50px;
+            border-bottom-right-radius: 100% 50px;
+            margin-bottom: -50px; /* pulls it up to overlap */
+       }
+
+        .cta h1 {
+            color:black;
+            margin-bottom: 40px;
+            padding: 0;
+
+        }
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: black;
+            background-color: lightcoral;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .hero-btn:hover {
+            background-color: white;
+            transform: scale(1.05);
+        }
+    
+        footer {
+            width: 100%;
+            padding: 20px 0 10px 0 ;
+            background: linear-gradient(to bottom, #d96b6b 0%, #f3b2b2 100%);
+            text-align: center;
+            color: black;
+            border-top-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+        }
+        
+        footer img {
+            width: 140px;
+            height: auto;
+            margin: 5px auto 10px auto;
+            display: block;
+        }
+
+        footer h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+                
+        }
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding :0;
+            margin: 5px 0 10px 0;
+        }
+    
+        footer ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        footer ul li a:hover {
+           background: linear-gradient(135deg, #ffb6b9, #ffe6e6);
+            color: black;
+            transform: scale(1.05);
+
+        }
+        footer p {
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+
+    
+    
+
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo">
+        </div>
+        <nav class="navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="About.html">About</a>
+            <a href="Courses.html">Courses</a>
+            <a href="Contact.html">Contact</a>
+
+        </nav>
+    </header>
+    <div class="text-box">
+        <h1>ورتل القران ترتيلا</h1>
+        <p>And recite the Qur’ān with measured recitation.</p>
+        <img id="recitationImage" src="pexels-a-darmel-8164713.jpg">
+    </div>
+    <section class="Courses">
+        <h1> Courses we offer</h1>
+        <div class="row">
+            <a href="Qaida.html" class="Courses-col">
+                <h3>Arabic alphabets/Qaida Course</h3>
+                <p>Learn the Qaida in a very engaging way,through gaming and flashcards.</p>
+            </a>
+            
+            <a href="Recitation.html" class="Courses-col">
+                <h3>Quran Recitation Course</h3>
+                <p>Learn how to read Quran fluently in the right way with Tajweed.</p>
+            </a>
+        
+
+            <a href="Memorisation.html" class="Courses-col">
+                <h3>Quran Memorisation Course</h3>
+                <p>Recite the Quran correctly with Tajweed rules and memorise it by heart.</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="More-About">
+        <h1>About Noor Academy</h1>
+        <div class="content-wrapper">
+            <div class="text-content">
+                <p>Noor Academy is dedicated to providing high-quality education in Arabic language and Quranic studies. Our mission is to offer comprehensive and accessible learning experiences for students of all ages, aiming to foster a deep understanding and appreciation of the Arabic language and the Holy Quran.</p>
+                <h2>How We Teach Arabic And Quran</h2>
+                <p>At Noor Academy, we utilize a structured and interactive teaching approach to make learning Arabic and Quranic studies engaging and effective. Our curriculum is designed by experienced educators and scholars who integrate traditional teaching methods with modern educational tools.</p>
+                <h2>Arabic Language Program</h2>
+                <p>-Beginner to Advanced Levels: We offer courses tailored to different proficiency levels, ensuring that each student can start at the right point and progress steadily.</p>
+                <p>-Interactive Learning: Our classes incorporate multimedia resources,and interactive exercises to ease learning.</p>
+                <h2>Quranic Studies Program</h2>
+                <p>-Tajweed and Recitation: Students learn the rules of Tajweed to recite the Quran with proper pronunciation and intonation, preserving the beauty and authenticity of the recitation.</p>
+                <p>-Memorization (Hifz): We offer structured memorization programs with personalized support to help students commit the Quran to memory efficiently.
+                </p>
+
+            </div>
+            <div class="image-content">
+                <img src="pexels-fatemah-khaled-2236514-3936216.jpg">
+            </div>
+        </div>
+    </section>
+    <section class="pros">
+        <h1>What Makes Us Stand Out?</h1>
+        <div class="content-wrapper">
+            <div class="text-content">
+                <div class="row">
+                    <div class="pros-col">
+                        <p>-Native Arabic speaker teachers (Egyptians).</p>
+                        <p>-Graduated from El-Azher university in Egypt.</p>
+                        <p>-Very Engaging teaching styles.</p>
+                        <p>-Affordable price.</p>
+                        <p>-All teachers are Hafiz the whole Quran by heart with Tajweed.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="image-content">
+                <img src="Screenshot 2024-05-30 115731.png">
+            </div>
+        </div>
+    </section>
+    <div class="curve-divider"></div>
+
+    <section class="cta">
+        <h1>Would Like To Enrol To One Of The Courses?</h1>
+        <a href="Contact.html" class="hero-btn">CONTACT US</a>
+    </section>
+    
+
+    </section>
+    <footer>
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+        <img src="Logo.png">
+        <p>Contact Us: +44 7873370177</p>
+        <p>&copy;2025 Noor Academy. All rights reserved.</p>
+    </footer>
+    <div class="wrapper">
+        <div class="form-box login">
+            <button class="close-btn">&times;</button>
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <button class="close-btn">&times;</button>
+            <h2>Register</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" required> I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        const recitationImage = document.getElementById('recitationImage');
+
+        
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                wrapper.classList.remove('active-popup');
+            });
+        });
+
+        wrapper.addEventListener('click', (event) => {
+            if (event.target === wrapper) {
+                wrapper.classList.remove('active-popup');
+            }
+        });
+
+        // Scroll event to scale the image
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const scaleFactor = 1 + scrollY / 1000; // Adjust the divisor to control scaling speed
+            recitationImage.style.transform = `scale(${scaleFactor})`;
+        });
+    </script>
+</body>
+</html>
+
+
+
+       
